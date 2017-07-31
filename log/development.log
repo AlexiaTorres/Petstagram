@@ -1,0 +1,1779 @@
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_bin,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (292.6ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) COLLATE utf8_spanish_ci NOT NULL PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (381.5ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) COLLATE utf8_spanish_ci NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK(788135662692730275, 0)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DeviseCreatePets (20170731152619)
+  [1m[35m (302.2ms)[0m  [1m[35mCREATE TABLE `pets` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `birthday` date, `description` text, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (402.2ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_pets_on_email`  ON `pets` (`email`) [0m
+  [1m[35m (252.7ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_pets_on_reset_password_token`  ON `pets` (`reset_password_token`) [0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170731152619')[0m
+  [1m[35m (37.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2017-07-31 15:32:22', '2017-07-31 15:32:22')[0m
+  [1m[35m (41.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK(788135662692730275)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW CREATE TABLE `pets`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'pets'[0m
+Started GET "/thanks" for 127.0.0.1 at 2017-07-31 17:38:28 +0200
+  [1m[35m (1.1ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_bin,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/thanks"):
+  
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-31 17:38:33 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb (6.3ms)
+Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 17:38:39 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (3.0ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (251.9ms)
+Completed 200 OK in 1215ms (Views: 1154.8ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/auth/register/cmon_let_me_in" for 127.0.0.1 at 2017-07-31 17:38:45 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (5.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 104ms (Views: 99.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/register" for 127.0.0.1 at 2017-07-31 17:39:23 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uM9k9LW+rNeIuiuwweMVemOon5GMqMEaS0XDa/0iTvnCCIZfjYNGF5bdda18fvw4QF3puQZ2jFvuFGk1Gx+OBQ==", "pet"=>{"email"=>"scala@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPet Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `pets` WHERE `pets`.`email` = BINARY 'scala@gmail.com' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 304ms (ActiveRecord: 2.5ms)
+
+
+  
+NoMethodError (undefined method `avatar_content_type' for #<Pet:0x007fe6b40e97d0>):
+  
+activemodel (5.1.2) lib/active_model/attribute_methods.rb:432:in `method_missing'
+paperclip (5.0.0) lib/paperclip/validators/attachment_content_type_validator.rb:16:in `validate_each'
+activemodel (5.1.2) lib/active_model/validator.rb:150:in `block in validate'
+activemodel (5.1.2) lib/active_model/validator.rb:147:in `each'
+activemodel (5.1.2) lib/active_model/validator.rb:147:in `validate'
+activesupport (5.1.2) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.2) lib/active_support/callbacks.rb:197:in `block (2 levels) in halting'
+activesupport (5.1.2) lib/active_support/callbacks.rb:601:in `block (2 levels) in default_terminator'
+activesupport (5.1.2) lib/active_support/callbacks.rb:600:in `catch'
+activesupport (5.1.2) lib/active_support/callbacks.rb:600:in `block in default_terminator'
+activesupport (5.1.2) lib/active_support/callbacks.rb:198:in `block in halting'
+activesupport (5.1.2) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.2) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.2) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.2) lib/active_support/callbacks.rb:130:in `run_callbacks'
+activesupport (5.1.2) lib/active_support/callbacks.rb:825:in `_run_validate_callbacks'
+activemodel (5.1.2) lib/active_model/validations.rb:405:in `run_validations!'
+activemodel (5.1.2) lib/active_model/validations/callbacks.rb:110:in `block in run_validations!'
+activesupport (5.1.2) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.1.2) lib/active_support/callbacks.rb:825:in `_run_validation_callbacks'
+activemodel (5.1.2) lib/active_model/validations/callbacks.rb:110:in `run_validations!'
+activemodel (5.1.2) lib/active_model/validations.rb:335:in `valid?'
+activerecord (5.1.2) lib/active_record/validations.rb:65:in `valid?'
+activerecord (5.1.2) lib/active_record/validations.rb:82:in `perform_validations'
+activerecord (5.1.2) lib/active_record/validations.rb:44:in `save'
+activerecord (5.1.2) lib/active_record/attribute_methods/dirty.rb:35:in `save'
+activerecord (5.1.2) lib/active_record/transactions.rb:308:in `block (2 levels) in save'
+activerecord (5.1.2) lib/active_record/transactions.rb:384:in `block in with_transaction_returning_status'
+activerecord (5.1.2) lib/active_record/connection_adapters/abstract/database_statements.rb:225:in `block in transaction'
+activerecord (5.1.2) lib/active_record/connection_adapters/abstract/transaction.rb:194:in `block in within_new_transaction'
+/usr/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+activerecord (5.1.2) lib/active_record/connection_adapters/abstract/transaction.rb:191:in `within_new_transaction'
+activerecord (5.1.2) lib/active_record/connection_adapters/abstract/database_statements.rb:225:in `transaction'
+activerecord (5.1.2) lib/active_record/transactions.rb:210:in `transaction'
+activerecord (5.1.2) lib/active_record/transactions.rb:381:in `with_transaction_returning_status'
+activerecord (5.1.2) lib/active_record/transactions.rb:308:in `block in save'
+activerecord (5.1.2) lib/active_record/transactions.rb:323:in `rollback_active_record_state!'
+activerecord (5.1.2) lib/active_record/transactions.rb:307:in `save'
+activerecord (5.1.2) lib/active_record/suppressor.rb:42:in `save'
+devise (4.3.0) app/controllers/devise/registrations_controller.rb:17:in `create'
+actionpack (5.1.2) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.2) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.2) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.2) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.2) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.2) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.2) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.2) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.2) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_bin,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK(788135662692730275, 0)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddAttachmentAvatarToPets (20170731154113)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK(788135662692730275)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_bin,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK(788135662692730275, 0)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddAttachmentAvatarToPets (20170731154113)
+  [1m[35m (663.2ms)[0m  [1m[35mALTER TABLE `pets` ADD `avatar_file_name` varchar(255)[0m
+  [1m[35m (649.6ms)[0m  [1m[35mALTER TABLE `pets` ADD `avatar_content_type` varchar(255)[0m
+  [1m[35m (692.2ms)[0m  [1m[35mALTER TABLE `pets` ADD `avatar_file_size` int[0m
+  [1m[35m (570.5ms)[0m  [1m[35mALTER TABLE `pets` ADD `avatar_updated_at` datetime[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170731154113')[0m
+  [1m[35m (87.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK(788135662692730275)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `pets`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'pets'[0m
+Started GET "/auth/register/cmon_let_me_in" for 127.0.0.1 at 2017-07-31 17:57:22 +0200
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_bin,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (262.3ms)
+Completed 200 OK in 1045ms (Views: 957.7ms | ActiveRecord: 4.2ms)
+
+
+Started POST "/auth/register" for 127.0.0.1 at 2017-07-31 17:57:50 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iOARcxyd1OScvzRRn3g7Fr+9aAgy1lfRlrYp3sFlCxIGMbm/QRefFwx86jor4t9JScKeILU2234ZkAIy5kOD7A==", "pet"=>{"email"=>"scala@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPet Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM `pets` WHERE `pets`.`email` = BINARY 'scala@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `pets` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('scala@gmail.com', '$2a$11$zN2CHSc/nMXulCfTPbShze7Ceqddz73CXfFmSwX5NNH2QLZwwRIKm', '2017-07-31 15:57:50', '2017-07-31 15:57:50')[0m
+  [1m[35m (42.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (17.9ms)[0m  [1m[33mUPDATE `pets` SET `sign_in_count` = 1, `current_sign_in_at` = '2017-07-31 15:57:50', `last_sign_in_at` = '2017-07-31 15:57:50', `current_sign_in_ip` = '127.0.0.1', `last_sign_in_ip` = '127.0.0.1' WHERE `pets`.`id` = 1[0m
+  [1m[35m (58.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 371ms (ActiveRecord: 121.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 17:57:50 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb (6.2ms)
+Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2017-07-31 17:58:01 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/admin"):
+  
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-31 17:58:09 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb (8.2ms)
+Completed 200 OK in 16ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_bin,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK(788135662692730275, 0)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DeviseCreateAdminUsers (20170731160024)
+  [1m[35m (378.6ms)[0m  [1m[35mCREATE TABLE `admin_users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (274.7ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_admin_users_on_email`  ON `admin_users` (`email`) [0m
+  [1m[35m (302.1ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_admin_users_on_reset_password_token`  ON `admin_users` (`reset_password_token`) [0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170731160024')[0m
+  [1m[35m (70.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveAdminComments (20170731160031)
+  [1m[35m (398.8ms)[0m  [1m[35mCREATE TABLE `active_admin_comments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `namespace` varchar(255), `body` text, `resource_type` varchar(255), `resource_id` bigint, `author_type` varchar(255), `author_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_active_admin_comments_on_resource_type_and_resource_id`  (`resource_type`, `resource_id`),  INDEX `index_active_admin_comments_on_author_type_and_author_id`  (`author_type`, `author_id`)) ENGINE=InnoDB[0m
+  [1m[35m (241.7ms)[0m  [1m[35mCREATE  INDEX `index_active_admin_comments_on_namespace`  ON `active_admin_comments` (`namespace`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170731160031')[0m
+  [1m[35m (74.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK(788135662692730275)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW CREATE TABLE `active_admin_comments`[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'active_admin_comments'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `admin_users`[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'admin_users'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW CREATE TABLE `pets`[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'pets'[0m
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:04:08 +0200
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_bin,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb (7.4ms)
+Completed 200 OK in 32ms (Views: 15.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2017-07-31 18:04:13 +0200
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2017-07-31 18:04:13 +0200
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/devise/shared/_links.erb (3.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (72.5ms)
+Completed 200 OK in 16508ms (Views: 16460.2ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2017-07-31 18:04:44 +0200
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"15Zgd/gWN2tkAdjQFrGpbjN2Q6Jvdrhit9rjPzcx9bdZR8i7pZx8mPTCBruiK00xxQm1iuiWNM04/MjTEBd9SQ==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (1.3ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`email` = 'admin@example.com' ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 15ms (ActiveRecord: 1.3ms)
+
+
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"15Zgd/gWN2tkAdjQFrGpbjN2Q6Jvdrhit9rjPzcx9bdZR8i7pZx8mPTCBruiK00xxQm1iuiWNM04/MjTEBd9SQ==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/devise/shared/_links.erb (3.8ms)
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (70.2ms)
+Completed 200 OK in 584ms (Views: 391.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2017-07-31 18:04:49 +0200
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G+NzMdgd1jnjfOf2N5eekFNTPe5Ev0peYhmpL8JLG2GVMtv9hZedynO/OZ2DDXrPpSzLxsNfxvHtP4LD5W2Tnw==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (0.9ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`email` = 'admin@example.com' ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.9ms)
+
+
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G+NzMdgd1jnjfOf2N5eekFNTPe5Ev0peYhmpL8JLG2GVMtv9hZedynO/OZ2DDXrPpSzLxsNfxvHtP4LD5W2Tnw==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/devise/shared/_links.erb (3.1ms)
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (41.8ms)
+Completed 200 OK in 494ms (Views: 317.6ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_bin,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdminUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `admin_users` WHERE `admin_users`.`email` = BINARY 'admin@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `admin_users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('admin@example.com', '$2a$11$VIJg4wBzIbpoj8g8c6aaGOZLV/zl8AI1t.sO4Q2.evlOLdw2iQ0/u', '2017-07-31 16:05:08', '2017-07-31 16:05:08')[0m
+  [1m[35m (51.4ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/admin/login" for 127.0.0.1 at 2017-07-31 18:05:14 +0200
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dhD6InXaF0nSkFrPQPWgiyU+RnqdBLUcP0u77gK6bxn4wVLuKFBcukJThKT0b0TU00GwUhrkObOwbZACJZzn5w==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (0.9ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`email` = 'admin@example.com' ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE `admin_users` SET `current_sign_in_at` = '2017-07-31 16:05:14', `last_sign_in_at` = '2017-07-31 16:05:14', `current_sign_in_ip` = '127.0.0.1', `last_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2017-07-31 16:05:14' WHERE `admin_users`.`id` = 1[0m
+  [1m[35m (44.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 251ms (ActiveRecord: 47.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2017-07-31 18:05:14 +0200
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/page/index.html.arb
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/page/index.html.arb (306.1ms)
+Completed 200 OK in 321ms (Views: 310.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2017-07-31 18:05:17 +0200
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (5.2ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `admin_users` LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `admin_users` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `admin_users`[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `admin_users` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` ORDER BY `admin_users`.`id` desc LIMIT 30 OFFSET 0[0m
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb (359.0ms)
+Completed 200 OK in 384ms (Views: 363.1ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/admin/pets" for 127.0.0.1 at 2017-07-31 18:05:20 +0200
+Processing by Admin::PetsController#index as HTML
+  [1m[36mAdminUser Load (0.9ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `pets`[0m
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` ORDER BY `pets`.`id` desc LIMIT 30 OFFSET 0[0m
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb (397.3ms)
+Completed 200 OK in 424ms (Views: 402.5ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/admin/pets/1" for 127.0.0.1 at 2017-07-31 18:06:08 +0200
+Processing by Admin::PetsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (1.0ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb (283.7ms)
+Completed 500 Internal Server Error in 305ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (The asset "thumb/avatar.jpg" is not present in the asset pipeline.):
+    1: insert_tag renderer_for(:show)
+  
+app/admin/pet.rb:27:in `block (4 levels) in <top (required)>'
+app/admin/pet.rb:26:in `block (3 levels) in <top (required)>'
+app/admin/pet.rb:20:in `block (2 levels) in <top (required)>'
+Started GET "/admin/pets" for 127.0.0.1 at 2017-07-31 18:07:24 +0200
+Processing by Admin::PetsController#index as HTML
+  [1m[36mAdminUser Load (1.0ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `pets`[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mPet Load (1.1ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` ORDER BY `pets`.`id` desc LIMIT 30 OFFSET 0[0m
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb (422.2ms)
+Completed 200 OK in 496ms (Views: 426.3ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/admin/pets/1" for 127.0.0.1 at 2017-07-31 18:07:34 +0200
+Processing by Admin::PetsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (1.0ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[36mPet Load (0.8ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb (264.2ms)
+Completed 500 Internal Server Error in 280ms (ActiveRecord: 1.8ms)
+
+
+  
+ActionView::Template::Error (The asset "thumb/avatar.jpg" is not present in the asset pipeline.):
+    1: insert_tag renderer_for(:show)
+  
+app/admin/pet.rb:28:in `block (4 levels) in <top (required)>'
+app/admin/pet.rb:27:in `block (3 levels) in <top (required)>'
+app/admin/pet.rb:21:in `block (2 levels) in <top (required)>'
+Started GET "/admin/pets" for 127.0.0.1 at 2017-07-31 18:08:07 +0200
+Processing by Admin::PetsController#index as HTML
+  [1m[36mAdminUser Load (0.9ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `pets`[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` ORDER BY `pets`.`id` desc LIMIT 30 OFFSET 0[0m
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb (444.9ms)
+Completed 200 OK in 513ms (Views: 450.2ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/admin/pets" for 127.0.0.1 at 2017-07-31 18:08:14 +0200
+Processing by Admin::PetsController#index as HTML
+  [1m[36mAdminUser Load (0.9ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `pets`[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mPet Load (0.8ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` ORDER BY `pets`.`id` desc LIMIT 30 OFFSET 0[0m
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb (355.0ms)
+Completed 200 OK in 372ms (Views: 359.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/admin/pets/1" for 127.0.0.1 at 2017-07-31 18:08:17 +0200
+Processing by Admin::PetsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (3.6ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb (294.4ms)
+Completed 500 Internal Server Error in 318ms (ActiveRecord: 4.6ms)
+
+
+  
+ActionView::Template::Error (The asset "thumb/avatar.jpg" is not present in the asset pipeline.):
+    1: insert_tag renderer_for(:show)
+  
+app/admin/pet.rb:28:in `block (4 levels) in <top (required)>'
+app/admin/pet.rb:27:in `block (3 levels) in <top (required)>'
+app/admin/pet.rb:21:in `block (2 levels) in <top (required)>'
+Started GET "/admin/pets" for 127.0.0.1 at 2017-07-31 18:11:33 +0200
+Processing by Admin::PetsController#index as HTML
+  [1m[36mAdminUser Load (0.9ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `pets`[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `pets` LIMIT 30 OFFSET 0) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mPet Load (0.7ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` ORDER BY `pets`.`id` desc LIMIT 30 OFFSET 0[0m
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb (369.2ms)
+Completed 200 OK in 435ms (Views: 373.7ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/admin/pets/1/edit" for 127.0.0.1 at 2017-07-31 18:11:39 +0200
+Processing by Admin::PetsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/edit.html.arb
+  [1m[36mCACHE Pet Load (0.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/edit.html.arb (372.4ms)
+Completed 200 OK in 389ms (Views: 378.6ms | ActiveRecord: 1.8ms)
+
+
+Started PATCH "/admin/pets/1" for 127.0.0.1 at 2017-07-31 18:14:51 +0200
+Processing by Admin::PetsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eOHABgc4TnsC7jbHO3eMx/8tZHP/B0pq+Hrqy/POAHXVNLS79beCj9rkL4gsmui5Kc0MThZg9P/CREP+5I1nvw==", "pet"=>{"name"=>"Scala", "description"=>"Soy muy bonita", "email"=>"scala@gmail.com", "birthday(1i)"=>"2017", "birthday(2i)"=>"4", "birthday(3i)"=>"26", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f132590b520 @tempfile=#<Tempfile:/tmp/RackMultipart20170731-6930-jtpp1b.jpeg>, @original_filename="WhatsApp Image 2017-07-29 at 15.04.54.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"pet[avatar]\"; filename=\"WhatsApp Image 2017-07-29 at 15.04.54.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Pet", "id"=>"1"}
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[36mPet Load (0.7ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 LIMIT 1[0m
+Command :: file -b --mime '/tmp/c97d86f296789676a7efcbaa1f6a7fc220170731-6930-1o1bkql.jpeg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/87df3b0d374dad32a250e242d730414020170731-6930-nqbxi.jpeg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/87df3b0d374dad32a250e242d730414020170731-6930-nqbxi.jpeg[0]'
+Command :: convert '/tmp/87df3b0d374dad32a250e242d730414020170731-6930-nqbxi.jpeg[0]' -auto-orient -resize "x400" -crop "400x400+156+0" +repage '/tmp/e9ea0ebf9dab24a176c246f16d8ca65f20170731-6930-qtqzip'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/87df3b0d374dad32a250e242d730414020170731-6930-nqbxi.jpeg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/87df3b0d374dad32a250e242d730414020170731-6930-nqbxi.jpeg[0]'
+Command :: convert '/tmp/87df3b0d374dad32a250e242d730414020170731-6930-nqbxi.jpeg[0]' -auto-orient -resize "x200" -crop "200x200+78+0" +repage '/tmp/e9ea0ebf9dab24a176c246f16d8ca65f20170731-6930-h6ugo1'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/tmp/c97d86f296789676a7efcbaa1f6a7fc220170731-6930-vslub0.jpeg'
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE `pets` SET `name` = 'Scala', `description` = 'Soy muy bonita', `avatar_file_name` = 'WhatsApp_Image_2017-07-29_at_15.04.54.jpeg', `avatar_content_type` = 'image/jpeg', `avatar_file_size` = 89875, `avatar_updated_at` = '2017-07-31 16:14:51', `birthday` = '2017-04-26', `updated_at` = '2017-07-31 16:14:52' WHERE `pets`.`id` = 1[0m
+  [1m[35m (61.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin/pets/1
+Completed 302 Found in 1224ms (ActiveRecord: 64.7ms)
+
+
+Started GET "/admin/pets/1" for 127.0.0.1 at 2017-07-31 18:14:52 +0200
+Processing by Admin::PetsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[36mPet Load (1.1ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb (264.6ms)
+Completed 200 OK in 279ms (Views: 270.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/admin/pets/1" for 127.0.0.1 at 2017-07-31 18:15:00 +0200
+Processing by Admin::PetsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (1.1ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[36mPet Load (0.7ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 LIMIT 1[0m
+  Rendering /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb
+  Rendered /var/lib/gems/2.3.0/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb (296.8ms)
+Completed 200 OK in 312ms (Views: 302.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:19:01 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb (6.3ms)
+Completed 200 OK in 15ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:19:08 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb (6.2ms)
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:19:53 +0200
+  
+ArgumentError (Invalid route name, already in use: 'admin_root' 
+You may have defined two routes with the same name using the `:as` option, or you may be overriding a route already defined by a resource with the same naming. For the latter, you can restrict the routes created with `resources` as explained here: 
+http://guides.rubyonrails.org/routing.html#restricting-the-routes-created):
+  
+config/routes.rb:5:in `block in <top (required)>'
+config/routes.rb:1:in `<top (required)>'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:20:06 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:20:29 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:20:48 +0200
+  
+ActionController::RoutingError (uninitialized constant HomeController):
+  
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.2) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:21:35 +0200
+  
+ActionController::RoutingError (uninitialized constant HomeController):
+  
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.2) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:21:51 +0200
+  [1m[35m (1.3ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_bin,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (uninitialized constant HomeController):
+  
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.2) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:21:54 +0200
+  
+ActionController::RoutingError (uninitialized constant HomeController):
+  
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.2) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:22:11 +0200
+  
+ActionController::RoutingError (uninitialized constant HomeController):
+  
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.2) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:23:11 +0200
+Processing by HomeController#index as HTML
+Completed 500 Internal Server Error in 988ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<HomeController:0x00000003021f90>
+Did you mean?  current_admin_user
+               current_pet):
+  
+app/controllers/home_controller.rb:10:in `get_user'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:23:46 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.1ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (655.6ms)
+Completed 500 Internal Server Error in 727ms (ActiveRecord: 3.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_signed_in?' for #<#<Class:0x00000004349ca8>:0x00000004332058>
+Did you mean?  pet_signed_in?):
+    1: <% if user_signed_in? %>
+    2:     <li class="visible-xs visible-sm"><%= link_to 'logout', destroy_user_session_path, method: 'delete', class: 'log_out' %></li>
+    3: <% else %>
+    4:     <li class="visible-xs visible-sm"><%= link_to 'login', user_session_path, method: 'post', class: 'log_in' %></li>
+  
+app/views/home/index.html.erb:1:in `_app_views_home_index_html_erb__30898976461486113_35280900'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:23:57 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.3ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (502.2ms)
+Completed 500 Internal Server Error in 516ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_signed_in?' for #<#<Class:0x00000004349ca8>:0x000000062bcba8>
+Did you mean?  pet_signed_in?):
+    1: <% if user_signed_in? %>
+    2:     <li class="visible-xs visible-sm"><%= link_to 'logout', destroy_user_session_path, method: 'delete', class: 'log_out' %></li>
+    3: <% else %>
+    4:     <li class="visible-xs visible-sm"><%= link_to 'login', user_session_path, method: 'post', class: 'log_in' %></li>
+  
+app/views/home/index.html.erb:1:in `_app_views_home_index_html_erb__30898976461486113_51769340'
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:24:22 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 1257ms (Views: 1247.6ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/auth/logout" for 127.0.0.1 at 2017-07-31 18:24:47 +0200
+Processing by Pets::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8viKLOrLYdKTbbAWSvj8CzbkFsLjSsTQIjd8iiNnL09fLf6RGEStJktnqVldFZh14AR+/wotekUYCdW/NCRIhQ=="}
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[36mPet Load (0.8ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 60ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:24:47 +0200
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 310ms (Views: 297.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2017-07-31 18:24:49 +0200
+Processing by Pets::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"WQPmKKrsudtq+kioRwIQMQIjJLOJGgWC24vhucbVNt4vhuDYRpyX0/aJh6+PPs0gjU5ymHj1wN522TQGRxRcJw=="}
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Processing by Pets::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"WQPmKKrsudtq+kioRwIQMQIjJLOJGgWC24vhucbVNt4vhuDYRpyX0/aJh6+PPs0gjU5ymHj1wN522TQGRxRcJw=="}
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (3.0ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 410ms (Views: 405.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2017-07-31 18:24:54 +0200
+Processing by Pets::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8y81ZE8dNLBoyEDz2/zbWsVwWey5k+g//o4Q67zkrNCFqjOUo20auPS7j/QTwAZLSh0Px0h8LWNT3MVUPSXGKQ==", "pet"=>{"email"=>"scala@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mPet Load (1.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`email` = 'scala@gmail.com' ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE `pets` SET `current_sign_in_at` = '2017-07-31 16:24:54', `sign_in_count` = 2, `updated_at` = '2017-07-31 16:24:54' WHERE `pets`.`id` = 1[0m
+  [1m[35m (40.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 263ms (ActiveRecord: 43.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:24:54 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.5ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 423ms (Views: 415.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:37:31 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 9499ms (Views: 9489.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:38:07 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 419ms (Views: 410.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:40:49 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.8ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 364ms (Views: 352.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:41:31 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 410ms (Views: 402.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:42:04 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.3ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 321ms (Views: 311.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:42:10 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 299ms (Views: 292.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:42:56 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 376ms (Views: 367.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:43:14 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.3ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 357ms (Views: 347.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:45:41 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 355ms (Views: 343.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:46:45 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (6.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 347ms (Views: 333.4ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:47:07 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.5ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3935ms (Views: 3926.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:47:20 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 4029ms (Views: 4020.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:48:25 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4110ms (Views: 4102.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:49:04 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (3.5ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3784ms (Views: 3773.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:49:49 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 3743ms (Views: 3735.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:50:31 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 327ms (Views: 317.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:51:00 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (4.7ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 3715ms (Views: 3702.6ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:51:30 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (4.8ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 337ms (Views: 321.7ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:52:33 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 330ms (Views: 321.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:53:14 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 302ms (Views: 294.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:55:07 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.3ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 4045ms (Views: 4036.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:55:24 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (5.7ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 4222ms (Views: 4207.6ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 18:55:40 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.3ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 421ms (Views: 408.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:11:54 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 4275ms (Views: 4266.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:12:35 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.6ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3775ms (Views: 3760.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:12:44 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 335ms (Views: 327.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:13:36 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.7ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3793ms (Views: 3782.9ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:14:18 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3889ms (Views: 3881.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:15:03 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (5.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 3896ms (Views: 3878.6ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:15:16 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 3966ms (Views: 3958.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:15:27 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (4.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 298ms (Views: 286.2ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:15:42 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3654ms (Views: 3644.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:16:59 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (3.3ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3668ms (Views: 3658.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:17:13 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.1ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 3747ms (Views: 3739.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:17:28 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 3700ms (Views: 3691.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:17:44 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3614ms (Views: 3605.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:19:40 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3861ms (Views: 3852.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:20:07 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 3723ms (Views: 3714.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:38:10 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.1ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4209ms (Views: 4201.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:41:01 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.1ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 1550ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after ".register-button ": expected selector, was "{"):
+    4:     <title>Petstagram</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/public/_home.sass:47
+app/assets/stylesheets/public/general.sass:1
+app/assets/stylesheets/application.sass:3
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__3754035664520370225_69902395281500'
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:41:32 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 3720ms (Views: 3713.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:41:54 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 3501ms (Views: 3492.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:42:26 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.8ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 3680ms (Views: 3671.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:43:15 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (4.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 3576ms (Views: 3565.2ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:44:06 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.6ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 3653ms (Views: 3644.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:44:51 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 3929ms (Views: 3922.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:46:34 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (5.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3607ms (Views: 3594.1ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:46:56 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3817ms (Views: 3809.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:47:21 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3589ms (Views: 3582.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:47:38 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4070ms (Views: 4063.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:47:56 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 3921ms (Views: 3909.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:48:19 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (3.2ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 3595ms (Views: 3585.7ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:48:34 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.1ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4088ms (Views: 4080.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:48:55 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 3522ms (Views: 3515.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:49:30 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (3.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 295ms (Views: 285.5ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:50:00 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.3ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 339ms (Views: 330.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:50:24 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.7ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 298ms (Views: 290.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:50:33 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 288ms (Views: 281.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:50:57 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.1ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 4098ms (Views: 4090.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:51:19 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (2.0ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 1588ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "cursor:pointer": expected selector, was ";"):
+    4:     <title>Petstagram</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/public/_home.sass:61
+app/assets/stylesheets/public/general.sass:1
+app/assets/stylesheets/application.sass:3
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__3754035664520370225_69902397637700'
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:51:28 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.8ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 1407ms (ActiveRecord: 1.8ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "pointer": expected expression (e.g. 1px, bold), was ";"):
+    4:     <title>Petstagram</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/public/_home.sass:61
+app/assets/stylesheets/public/general.sass:1
+app/assets/stylesheets/application.sass:3
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__3754035664520370225_69902386586520'
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:51:33 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (1.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 1553ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "pointer": expected expression (e.g. 1px, bold), was ";"):
+    4:     <title>Petstagram</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/public/_home.sass:61
+app/assets/stylesheets/public/general.sass:1
+app/assets/stylesheets/application.sass:3
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__3754035664520370225_69902387593380'
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:51:42 +0200
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3643ms (Views: 3636.4ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/auth/logout" for 127.0.0.1 at 2017-07-31 19:52:03 +0200
+Processing by Pets::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"XeCk7A+QcQc6vshlXbR/hgYHx2l8y1CNiYbH56NTbYRDGzwwkqt3r6AgJLDulXcbAjmGkOLTuU0lG3+NAeZ4Mw=="}
+  [1m[36mPet Load (1.4ms)[0m  [1m[34mSELECT  `pets`.* FROM `pets` WHERE `pets`.`id` = 1 ORDER BY `pets`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:52:03 +0200
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 300ms (Views: 296.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2017-07-31 19:52:10 +0200
+Processing by Pets::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"W2OFdEc5l2sFTSe0sE0qNPkir6hF4DzRcUUW4JzUC5JZDXv7gSFV9eUfcXI/cgUzzdleg4wwoHtbrfRCJtMTTg=="}
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Processing by Pets::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"W2OFdEc5l2sFTSe0sE0qNPkir6hF4DzRcUUW4JzUC5JZDXv7gSFV9eUfcXI/cgUzzdleg4wwoHtbrfRCJtMTTg=="}
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (2.2ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 274ms (Views: 271.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2017-07-31 19:53:58 +0200
+Processing by Pets::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"W2OFdEc5l2sFTSe0sE0qNPkir6hF4DzRcUUW4JzUC5JZDXv7gSFV9eUfcXI/cgUzzdleg4wwoHtbrfRCJtMTTg=="}
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Processing by Pets::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"W2OFdEc5l2sFTSe0sE0qNPkir6hF4DzRcUUW4JzUC5JZDXv7gSFV9eUfcXI/cgUzzdleg4wwoHtbrfRCJtMTTg=="}
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (2.4ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 262ms (Views: 259.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2017-07-31 19:55:02 +0200
+Processing by Pets::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"W2OFdEc5l2sFTSe0sE0qNPkir6hF4DzRcUUW4JzUC5JZDXv7gSFV9eUfcXI/cgUzzdleg4wwoHtbrfRCJtMTTg=="}
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Processing by Pets::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"W2OFdEc5l2sFTSe0sE0qNPkir6hF4DzRcUUW4JzUC5JZDXv7gSFV9eUfcXI/cgUzzdleg4wwoHtbrfRCJtMTTg=="}
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (2.7ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 344ms (Views: 341.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:56:21 +0200
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 310ms (Views: 302.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-31 19:57:36 +0200
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 4116ms (Views: 4112.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2017-07-31 19:57:45 +0200
+Processing by Pets::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"bHDBCEhalm8w0F3gSR0UwdELlK0cvzfI5oAsHJckoOZuHj+HjkJU8dCCCybGIjvG5fBlhtVvq2LMaM6+LSO4Og=="}
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Processing by Pets::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"bHDBCEhalm8w0F3gSR0UwdELlK0cvzfI5oAsHJckoOZuHj+HjkJU8dCCCybGIjvG5fBlhtVvq2LMaM6+LSO4Og=="}
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (60.8ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (67.9ms)
+Completed 200 OK in 365ms (Views: 363.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 20:52:31 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (3.2ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 3865ms (Views: 3861.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 20:52:44 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (4.0ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 420ms (Views: 416.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 20:52:52 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (2.4ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 330ms (Views: 326.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 20:56:06 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (3.1ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 4184ms (Views: 4181.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 20:56:25 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (3.1ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 3655ms (Views: 3651.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 21:11:54 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (2.6ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 3584ms (Views: 3580.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 21:12:37 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (2.5ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 3648ms (Views: 3644.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 21:13:34 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (3.9ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 325ms (Views: 321.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 21:13:51 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (2.7ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 273ms (Views: 271.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/login" for 127.0.0.1 at 2017-07-31 21:14:46 +0200
+Processing by Pets::SessionsController#new as HTML
+  Rendering pets/sessions/new.html.erb within layouts/application
+  Rendered pets/shared/_links.html.erb (2.2ms)
+  Rendered pets/sessions/new.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 3883ms (Views: 3880.5ms | ActiveRecord: 0.0ms)
+
+

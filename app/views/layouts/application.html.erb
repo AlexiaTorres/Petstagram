@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Petstagram</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="app_name">
+      <span data-text="P"></span>
+      <span data-text="E"></span>
+      <span data-text="T"></span>
+      <span data-text="S"></span>
+      <span data-text="T"></span>
+      <span data-text="A"></span>
+      <span data-text="G"></span>
+      <span data-text="R"></span>
+      <span data-text="A"></span>
+      <span data-text="M"></span>
+    </div>
+    <section id="main_body">
+      <%= yield %>
+    </section>
+  </body>
+</html>

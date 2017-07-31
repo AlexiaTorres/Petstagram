@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,900)
+@import 'home'
+@import 'signin'
+
+body
+  background-image: image-url('home-2.jpg')
+  background-size: cover
+  height: auto
+
+  .app_name
+    text-align: center
+    span
+      font: 900 13vw Raleway
+      position: relative
+      display: inline-block
+
+    span:nth-child(1n + 0):before
+      color: #4EC0B6
+
+    span:nth-child(1n + 0):after
+      color: #4ea4c0
+
+    span:nth-child(2n + 1):before
+      color: #7B43A4
+
+    span:nth-child(2n + 1):after
+      color: #9b43a4
+
+    span:nth-child(3n + 2):before
+      color: #20A4B3
+
+    span:nth-child(3n + 2):after
+      color: #2073b3
+
+    span:nth-child(4n + 3):before
+      color: #F522B5
+
+    span:nth-child(4n + 3):after
+      color: #f5226f
+
+    span:before, span:after
+      display: block
+      content: attr(data-text)
+      text-shadow: 0 0 1em
+
+    span:before
+      clip-path: polygon(0 0, 100% 0, 100% 100%)
+      position: absolute
+      color: #4EC0B6
+
+    span:after
+      clip-path: polygon(0 0, 100% 100%, 0 100%)
+      color: #7B43A4

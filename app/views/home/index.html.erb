@@ -1,0 +1,7 @@
+<section id="home">
+  <% if pet_signed_in? %>
+      <%= link_to 'logout', destroy_pet_session_path, method: 'delete', class: 'register_button' %>
+  <% else %>
+      <%= link_to 'login', pet_session_path, method: 'post', class: 'register_button' %>
+  <% end %>
+</section>
